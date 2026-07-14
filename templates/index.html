@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Potability Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>💧 Water Potability Prediction</h1>
+
+    <form action="/predict" method="POST">
+
+        <div class="form-group">
+            <label>pH</label>
+            <input type="number" step="any" name="pH"
+                   placeholder="Range: 2.06 - 12.51"
+                   value="{{ request.form.get('pH','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Iron (mg/L)</label>
+            <input type="number" step="any" name="Iron"
+                   placeholder="Range: 0.00 - 15.75"
+                   value="{{ request.form.get('Iron','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Nitrate (mg/L)</label>
+            <input type="number" step="any" name="Nitrate"
+                   placeholder="Range: 0.48 - 73.07"
+                   value="{{ request.form.get('Nitrate','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Chloride (mg/L)</label>
+            <input type="number" step="any" name="Chloride"
+                   placeholder="Range: 34.17 - 1321.28"
+                   value="{{ request.form.get('Chloride','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Lead (mg/L)</label>
+            <input type="number" step="any" name="Lead"
+                   placeholder="Range: 0.00 - 3.50"
+                   value="{{ request.form.get('Lead','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Zinc (mg/L)</label>
+            <input type="number" step="any" name="Zinc"
+                   placeholder="Range: 0.00 - 24.38"
+                   value="{{ request.form.get('Zinc','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Turbidity (NTU)</label>
+            <input type="number" step="any" name="Turbidity"
+                   placeholder="Range: 0.00 - 18.59"
+                   value="{{ request.form.get('Turbidity','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Fluoride (mg/L)</label>
+            <input type="number" step="any" name="Fluoride"
+                   placeholder="Range: 0.00 - 12.85"
+                   value="{{ request.form.get('Fluoride','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Copper (mg/L)</label>
+            <input type="number" step="any" name="Copper"
+                   placeholder="Range: 0.00 - 11.18"
+                   value="{{ request.form.get('Copper','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Odor</label>
+            <input type="number" step="any" name="Odor"
+                   placeholder="Range: 0.01 - 4.14"
+                   value="{{ request.form.get('Odor','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Sulfate (mg/L)</label>
+            <input type="number" step="any" name="Sulfate"
+                   placeholder="Range: 11.94 - 1393.43"
+                   value="{{ request.form.get('Sulfate','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Conductivity</label>
+            <input type="number" step="any" name="Conductivity"
+                   placeholder="Range: 13.05 - 1891.52"
+                   value="{{ request.form.get('Conductivity','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Chlorine (mg/L)</label>
+            <input type="number" step="any" name="Chlorine"
+                   placeholder="Range: 1.05 - 10.69"
+                   value="{{ request.form.get('Chlorine','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Manganese (mg/L)</label>
+            <input type="number" step="any" name="Manganese"
+                   placeholder="Range: 0.00 - 23.74"
+                   value="{{ request.form.get('Manganese','') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Total Dissolved Solids (mg/L)</label>
+            <input type="number" step="any" name="Total Dissolved Solids"
+                   placeholder="Range: 0.01 - 579.80"
+                   value="{{ request.form.get('Total Dissolved Solids','') }}" required>
+        </div>
+
+        <button type="submit">Predict Water Quality</button>
+
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            <h2>{{ prediction_text }}</h2>
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
